@@ -115,6 +115,7 @@ function VideoUploadPage(props) {
                     axios.post('/api/video/thumbnail', variable)
                         .then(response => {
                             if (response.data.success) {
+                                console.log(response.data)
                                 setDuration(response.data.fileDuration)
                                 setThumbnail(response.data.thumbsFilePath)
                             } else {
@@ -154,7 +155,7 @@ function VideoUploadPage(props) {
                     </Dropzone>
 
                     {Thumbnail !== "" &&
-                        <div>
+                        <div>         {/*메모: 서버에 저장되있기때문에 앞에 5000번포트 url추가한거 */}
                             <img src={`http://localhost:5000/${Thumbnail}`} alt="haha" />
                         </div>
                     }
